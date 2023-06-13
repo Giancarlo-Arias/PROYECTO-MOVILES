@@ -5,7 +5,6 @@ public class GestorMenu {
     private String nombre;
     private String descripcion;
     private double precio;
-
     public GestorMenu(){}
 
     public GestorMenu(int id, String nombre, String descripcion, double precio) {
