@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.ordereats.R;
 import com.example.ordereats.domain.GestorMenu;
 
 import java.util.ArrayList;
@@ -20,17 +21,17 @@ public class AdapterSpinnerCoccion extends ArrayAdapter<gestorCoccion> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_coccion, parent, false);
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_coccion, parent, false);
         }
 
         gestorCoccion coccion = getItem(position);
 
-        TextView textViewIdCoccion = convertView.findViewById(R.id.textViewIdCoccion);
-        TextView textViewNombreCoccion = convertView.findViewById(R.id.textViewNombreCoccion);
+       // TextView textViewIdCoccion = convertView.findViewById(R.id.textViewIdCoccion);
+       // TextView textViewNombreCoccion = convertView.findViewById(R.id.textViewNombreCoccion);
 
-        textViewIdCoccion.setText(String.valueOf(coccion.getId_grado_coccion()));
-        textViewNombreCoccion.setText(coccion.getNombre());
+       // textViewIdCoccion.setText(String.valueOf(coccion.getId_grado_coccion()));
+       // textViewNombreCoccion.setText(coccion.getNombre());
 
-        return convertView;
+        return null;
     }
 }

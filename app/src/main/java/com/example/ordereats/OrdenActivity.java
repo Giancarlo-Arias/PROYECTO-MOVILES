@@ -64,7 +64,7 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
         requestQueue.add(jsonRequest);
         platillo = findViewById(R.id.spinnerPlatillo);
 
-        ordenDB = new ArrayList<>();
+       // ordenDB = new ArrayList<>();
     }
 
     @Override
@@ -125,8 +125,8 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
             if (especiales.isEmpty()) {
                 Toast.makeText(this, "No hay especiales.", Toast.LENGTH_SHORT).show();
             } else {
-                AdapterRecyclerPlatillos adapter = new AdapterRecyclerPlatillos(this, especiales);
-                platillo.setAdapter((SpinnerAdapter) adapter);
+               // AdapterRecyclerPlatillos adapter = new AdapterRecyclerPlatillos(this, especiales);
+               // platillo.setAdapter((SpinnerAdapter) adapter);
             }
 
 
@@ -141,8 +141,8 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
             if (proteinas.isEmpty()) {
                 Toast.makeText(this, "No hay proteínas.", Toast.LENGTH_SHORT).show();
             } else {
-                AdapterSpinnerProteinas adapter = new AdapterSpinnerProteinas(this, proteinas);
-                proteina.setAdapter(adapter);
+               // AdapterSpinnerProteinas adapter = new AdapterSpinnerProteinas(this, proteinas);
+              //  proteina.setAdapter(adapter);
             }
 
 
@@ -207,12 +207,12 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
                 int idCoccion = jsonObject.getInt("id_coccion");
                 String nombre = jsonObject.getString("nombre");
 
-                gestorCoccion cocciones = new gestorCoccion(idCoccion, nombre);
+              //  gestorCoccion cocciones = new gestorCoccion(idCoccion, nombre);
                 coccion.add(cocciones);
             }
 
-            AdapterSpinnerCoccion adapter3 = new AdapterSpinnerCoccion(getApplicationContext(), cocciones);
-            coccion.setAdapter(adapter3);
+          //  AdapterSpinnerCoccion adapter3 = new AdapterSpinnerCoccion(getApplicationContext(), cocciones);
+           // coccion.setAdapter(adapter3);
 
 
 // ...
@@ -223,8 +223,6 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
         }
     }
 
-
-    }
     public void volverInicio(View view) {
         Intent intent = new Intent(view.getContext(), MainActivity.class);
         view.getContext().startActivity(intent);

@@ -21,16 +21,16 @@ public class AdapterSpinnerPicante extends ArrayAdapter<gestorPicante> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_picante, parent, false);
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_picante, parent, false);
         }
 
         gestorPicante picante = getItem(position);
 
-        TextView textViewIdPicante = convertView.findViewById(R.id.textViewIdPicante);
-        TextView textViewNombrePicante = convertView.findViewById(R.id.textViewNombrePicante);
+        // TextView textViewIdPicante = convertView.findViewById(R.id.textViewIdPicante);
+       // TextView textViewNombrePicante = convertView.findViewById(R.id.textViewNombrePicante);
 
-        textViewIdPicante.setText(String.valueOf(picante.getId_nivel_picante()));
-        textViewNombrePicante.setText(picante.getNombre());
+       // textViewIdPicante.setText(String.valueOf(picante.getId_nivel_picante()));
+       // textViewNombrePicante.setText(picante.getNombre());
 
         return convertView;
     }
@@ -38,14 +38,14 @@ public class AdapterSpinnerPicante extends ArrayAdapter<gestorPicante> {
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_picante_dropdown, parent, false);
+          //  convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_picante_dropdown, parent, false);
         }
 
         gestorPicante picante = getItem(position);
 
-        TextView textViewNombrePicante = convertView.findViewById(R.id.textViewNombrePicanteDropdown);
+       // TextView textViewNombrePicante = convertView.findViewById(R.id.textViewNombrePicanteDropdown);
 
-        textViewNombrePicante.setText(picante.getNombre());
+       // textViewNombrePicante.setText(picante.getNombre());
 
         return convertView;
     }

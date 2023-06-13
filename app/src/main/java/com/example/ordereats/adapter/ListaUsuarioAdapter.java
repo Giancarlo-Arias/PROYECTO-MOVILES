@@ -26,8 +26,9 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
     @NonNull
     @Override
     public ListaUsuarioAdapter.contactoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_item,null,false);
-        return new contactoViewHolder(view);
+       // View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lista_item,null,false);
+       // return new contactoViewHolder(view);
+        return null;
     }
 
     @Override
@@ -47,10 +48,10 @@ public class ListaUsuarioAdapter extends RecyclerView.Adapter<ListaUsuarioAdapte
 
         public contactoViewHolder(@NonNull View itemView) {
             super(itemView);
-            txtnombree = itemView.findViewById(R.id.txt_Name);
-            txtapellidoo = itemView.findViewById(R.id.txt_Lastname);
-            txttelefonoo = itemView.findViewById(R.id.txt_Phone);
-            txtcorreoo = itemView.findViewById(R.id.txt_Correo);
+            //txtnombree = itemView.findViewById(R.id.txt_Name);
+           // txtapellidoo = itemView.findViewById(R.id.txt_Lastname);
+            //txttelefonoo = itemView.findViewById(R.id.txt_Phone);
+            //txtcorreoo = itemView.findViewById(R.id.txt_Correo);
         }
         public void setDatos(User user){
             txtnombree.setText(String.valueOf(user.getUser_Name()));

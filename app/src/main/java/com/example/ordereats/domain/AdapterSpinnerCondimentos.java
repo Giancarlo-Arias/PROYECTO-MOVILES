@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.ordereats.R;
+
 import java.util.ArrayList;
 
 public class AdapterSpinnerCondimentos extends ArrayAdapter<GestorMenu> {
@@ -18,16 +20,16 @@ public class AdapterSpinnerCondimentos extends ArrayAdapter<GestorMenu> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_condimento, parent, false);
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_condimento, parent, false);
         }
 
         GestorMenu condimento = getItem(position);
 
-        TextView textViewIdCondimento = convertView.findViewById(R.id.textViewIdCondimento);
-        TextView textViewNombreCondimento = convertView.findViewById(R.id.textViewNombreCondimento);
+       // TextView textViewIdCondimento = convertView.findViewById(R.id.textViewIdCondimento);
+       // TextView textViewNombreCondimento = convertView.findViewById(R.id.textViewNombreCondimento);
 
-        textViewIdCondimento.setText(String.valueOf(condimento.getId()));
-        textViewNombreCondimento.setText(condimento.getNombre());
+       // textViewIdCondimento.setText(String.valueOf(condimento.getId()));
+        // textViewNombreCondimento.setText(condimento.getNombre());
 
         return convertView;
     }
