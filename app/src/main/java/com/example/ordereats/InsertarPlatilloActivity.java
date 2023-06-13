@@ -107,7 +107,7 @@ public class InsertarPlatilloActivity extends AppCompatActivity implements Respo
     }
 
     public void volverInicio(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }
 }
