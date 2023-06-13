@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OrdenActivity">
+
+    <Button
+        android:id="@+id/buttonRegresar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="volverInicio"
+        android:text="Volver menú"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/lbltitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Orden"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/lblPlatillo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Platillo"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerPlatillo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblIngredienteEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingrediente Especial"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerIngredienteEspecial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblProteína"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Proteína"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerProteína"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblGuarnición"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guarnición"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerGuarnición"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblCondimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Condimento"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerCondimento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblNivelPicante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nivel Picante"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerNivelPicante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblTamañoPorción"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tamaño Porción"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerTamañoPorción"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/lblGradoCocción"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grado Cocción"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/spinnerGradoCocción"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btnRegistrarOrdenCliente"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registrar Orden" />
+
+</LinearLayout>

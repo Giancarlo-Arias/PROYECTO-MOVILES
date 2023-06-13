@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Ordereats"
         tools:targetApi="31">
         <activity
+            android:name=".OrdenActivity"
+            android:exported="false" />
+        <activity
             android:name=".InsertarIngredienteEspecialActivity"
             android:exported="false" />
         <activity
@@ -35,16 +38,12 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
-
         <activity
             android:name=".CreateAccountActivity"
             android:exported="false" />
-
         <activity
             android:name=".Menu"
-            android:exported="false"/>
-
-
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
