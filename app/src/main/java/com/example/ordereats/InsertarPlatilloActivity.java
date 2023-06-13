@@ -18,7 +18,7 @@ import com.example.ordereats.data.DataApi;
 import com.example.ordereats.domain.GestorMenu;
 
 import java.util.HashMap;
-        import java.util.Map;
+import java.util.Map;
 
 public class InsertarPlatilloActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
     private GestorMenu gestorMenu;
@@ -34,6 +34,7 @@ public class InsertarPlatilloActivity extends AppCompatActivity implements Respo
         setContentView(R.layout.activity_insertar_platillo);
         requestQueue = Volley.newRequestQueue(this);
         gestorMenu = new GestorMenu();
+        dataApi = new DataApi(); // Crear una instancia de DataApi
         nombreEditText = findViewById(R.id.nombreEditText);
         descripcionEditText = findViewById(R.id.descripcionEditText);
         precioEditText = findViewById(R.id.precioEditText);
