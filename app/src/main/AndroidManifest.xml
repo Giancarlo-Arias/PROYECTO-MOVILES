@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Ordereats"
         tools:targetApi="31">
         <activity
+            android:name=".ActualizaPlatilloActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListarPlatilloActivity"
+            android:exported="false" />
+        <activity
             android:name=".InsertarPlatilloActivity"
             android:exported="false" />
         <activity

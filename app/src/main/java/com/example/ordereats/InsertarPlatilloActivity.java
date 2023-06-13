@@ -1,5 +1,4 @@
 package com.example.ordereats;
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,20 +6,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ordereats.data.DataApi;
 import com.example.ordereats.domain.GestorMenu;
+import com.android.volley.toolbox.JsonObjectRequest;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.net.UnknownHostException;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class InsertarPlatilloActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener {
+public class InsertarPlatilloActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
     private GestorMenu gestorMenu;
     private DataApi dataApi;
     private RequestQueue requestQueue;
@@ -40,60 +38,38 @@ public class InsertarPlatilloActivity extends AppCompatActivity implements Respo
         precioEditText = findViewById(R.id.precioEditText);
     }
 
-    public void agregarPlatillo(View view) {
-        String nombre = nombreEditText.getText().toString();
-        String descripcion = descripcionEditText.getText().toString();
-        double precio = Double.parseDouble(precioEditText.getText().toString());
+    public void agregarPlatillo(View view) throws UnknownHostException {
+        String nombrePlatillo = nombreEditText.getText().toString();
+        String descripcionPlatillo = descripcionEditText.getText().toString();
+        String precioString = precioEditText.getText().toString();
 
-        boolean isFieldsValid = true;
-
-        if (nombre.isEmpty()) {
-            isFieldsValid = false;
-            Toast.makeText(this, "Falta el nombre", Toast.LENGTH_SHORT).show();
+        if (nombrePlatillo.isEmpty()) {
+            Toast.makeText(this, "Falta el nombre del platillo", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        if (descripcion.isEmpty()) {
-            isFieldsValid = false;
-            Toast.makeText(this, "Falta la descripción", Toast.LENGTH_SHORT).show();
+        if (descripcionPlatillo.isEmpty()) {
+            Toast.makeText(this, "Falta la descripción del platillo", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        if (precioEditText.getText().toString().isEmpty()) {
-            isFieldsValid = false;
-            Toast.makeText(this, "Falta el precio", Toast.LENGTH_SHORT).show();
+        if (precioString.isEmpty()) {
+            Toast.makeText(this, "Falta el precio del platillo", Toast.LENGTH_SHORT).show();
+            return;
         }
 
-        if (isFieldsValid) {
-            String url = dataApi.insertarPlatillo + "&nombre=" + nombre + "&descripcion=" + descripcion + "&precio=" + precio;
-            StringRequest request = new StringRequest(
-                    Request.Method.GET,
-                    url,
-                    new Response.Listener<String>() {
-                        @Override
-                        public void onResponse(String response) {
-                            Toast.makeText(InsertarPlatilloActivity.this, "La inserción se realizó con éxito", Toast.LENGTH_SHORT).show();
-                            nombreEditText.setText("");
-                            descripcionEditText.setText("");
-                            precioEditText.setText("");
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(InsertarPlatilloActivity.this, "Error al insertar los datos", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-            ) {
-                @Override
-                public Map<String, String> getHeaders() {
-                    Map<String, String> headers = new HashMap<>();
-                    headers.put("Content-Type", "application/json");
-                    return headers;
-                }
-            };
-            requestQueue.add(request);
-        } else {
-            Toast.makeText(this, "Por favor, complete todos los campos", Toast.LENGTH_SHORT).show();
+        double precioPlatillo;
+        try {
+            precioPlatillo = Double.parseDouble(precioString);
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "El precio del platillo debe ser un número válido", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        String urlQuery = dataApi.insertarPlatillo + "&nombre=" + nombrePlatillo + "&descripcion=" + descripcionPlatillo + "&precio=" + precioPlatillo;
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, urlQuery, null, this, this);
+        requestQueue.add(jsonObjectRequest);
     }
 
     @Override
@@ -103,8 +79,21 @@ public class InsertarPlatilloActivity extends AppCompatActivity implements Respo
     }
 
     @Override
-    public void onResponse(String response) {
-        // Lógica de respuesta exitosa
+    public void onResponse(JSONObject response) {
+        try {
+            // Obtener la respuesta del servidor
+            String message = response.getString("message");
+
+            // Mostrar mensaje de éxito
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+
+            // Limpiar los campos de entrada
+            nombreEditText.setText("");
+            descripcionEditText.setText("");
+            precioEditText.setText("");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
     public void volverInicio(View view) {
