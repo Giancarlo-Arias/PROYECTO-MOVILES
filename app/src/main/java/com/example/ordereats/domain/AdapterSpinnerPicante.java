@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.ordereats.R;
 import com.example.ordereats.domain.gestorPicante;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class AdapterSpinnerPicante extends ArrayAdapter<gestorPicante> {
         TextView textViewIdPicante = convertView.findViewById(R.id.textViewIdPicante);
         TextView textViewNombrePicante = convertView.findViewById(R.id.textViewNombrePicante);
 
-        textViewIdPicante.setText(String.valueOf(picante.getId_nivel_picante())));
+        textViewIdPicante.setText(String.valueOf(picante.getId_nivel_picante()));
         textViewNombrePicante.setText(picante.getNombre());
 
         return convertView;

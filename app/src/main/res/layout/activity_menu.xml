@@ -43,18 +43,12 @@
             android:text="Listar ingredientes especiales" />
 
         <Button
-<<<<<<< HEAD
             android:id="@+id/button_listar_guarnicion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ListarGuarniciones"
             android:text="Listar guarniciones" />
-=======
-            android:id="@+id/btnListUs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Lista usuarios" />
->>>>>>> main
+
 
         <Button
             android:id="@+id/btnRegistrarOrden"
