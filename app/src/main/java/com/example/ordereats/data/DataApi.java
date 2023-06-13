@@ -11,7 +11,7 @@ public class DataApi {
 
     /*API Guarniciones */
     public static String insertarGuarnicion=ip+"GuarnicionesApi.php?accion=InsertarGuarnicion";
-    public static String obtenerTodosGuarnicion=ip+"GuarnicionesApi.php?accion=ObtenerTodosGuarnicion";
+    public static String obtenerTodasGuarnicion=ip+"GuarnicionesApi.php?accion=ObtenerTodosGuarnicion";
     public static String eliminarGuarnicionPorId=ip+"GuarnicionesApi.php?accion=EliminarGuarnicionPorId";
     public static String obtenerGuarnicionPorId=ip+"GuarnicionesApi.php?accion=ObtenerGuarnicionPorId";
     public static String actualizarGuarnicion=ip+"GuarnicionesApi.php?accion=ActualizarGuarnicion";
