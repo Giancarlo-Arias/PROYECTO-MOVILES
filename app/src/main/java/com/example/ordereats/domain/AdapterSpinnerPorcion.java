@@ -18,16 +18,16 @@ public class AdapterSpinnerPorcion extends ArrayAdapter<GestorMenu> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_porcion, parent, false);
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_porcion, parent, false);
         }
 
         GestorMenu porcion = getItem(position);
 
-        TextView textViewIdPorcion = convertView.findViewById(R.id.textViewIdPorcion);
-        TextView textViewNombrePorcion = convertView.findViewById(R.id.textViewNombrePorcion);
+       // TextView textViewIdPorcion = convertView.findViewById(R.id.textViewIdPorcion);
+       // TextView textViewNombrePorcion = convertView.findViewById(R.id.textViewNombrePorcion);
 
-        textViewIdPorcion.setText(String.valueOf(porcion.getId()));
-        textViewNombrePorcion.setText(porcion.getNombre());
+        //textViewIdPorcion.setText(String.valueOf(porcion.getId()));
+        //textViewNombrePorcion.setText(porcion.getNombre());
 
         return convertView;
     }

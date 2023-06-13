@@ -18,16 +18,16 @@ public class AdapterSpinnerGuarniciones extends ArrayAdapter<GestorMenu> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_guarnicion, parent, false);
+           // convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_guarnicion, parent, false);
         }
 
         GestorMenu guarnicion = getItem(position);
 
-        TextView textViewIdGuarnicion = convertView.findViewById(R.id.textViewIdGuarnicion);
-        TextView textViewNombreGuarnicion = convertView.findViewById(R.id.textViewNombreGuarnicion);
+       // TextView textViewIdGuarnicion = convertView.findViewById(R.id.textViewIdGuarnicion);
+       // TextView textViewNombreGuarnicion = convertView.findViewById(R.id.textViewNombreGuarnicion);
 
-        textViewIdGuarnicion.setText(String.valueOf(guarnicion.getId()));
-        textViewNombreGuarnicion.setText(guarnicion.getNombre());
+       // textViewIdGuarnicion.setText(String.valueOf(guarnicion.getId()));
+       // textViewNombreGuarnicion.setText(guarnicion.getNombre());
 
         return convertView;
     }
@@ -35,14 +35,14 @@ public class AdapterSpinnerGuarniciones extends ArrayAdapter<GestorMenu> {
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_guarnicion_dropdown, parent, false);
+          //  convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_guarnicion_dropdown, parent, false);
         }
 
         GestorMenu guarnicion = getItem(position);
 
-        TextView textViewNombreGuarnicion = convertView.findViewById(R.id.textViewNombreGuarnicionDropdown);
+       // TextView textViewNombreGuarnicion = convertView.findViewById(R.id.textViewNombreGuarnicionDropdown);
 
-        textViewNombreGuarnicion.setText(guarnicion.getNombre());
+        //textViewNombreGuarnicion.setText(guarnicion.getNombre());
 
         return convertView;
     }

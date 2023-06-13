@@ -37,14 +37,14 @@ public class AdapterSpinnerCondimentos extends ArrayAdapter<GestorMenu> {
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_condimento_dropdown, parent, false);
+//            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_condimento_dropdown, parent, false);
         }
 
         GestorMenu condimento = getItem(position);
 
-        TextView textViewNombreCondimento = convertView.findViewById(R.id.textViewNombreCondimentoDropdown);
+       // TextView textViewNombreCondimento = convertView.findViewById(R.id.textViewNombreCondimentoDropdown);
 
-        textViewNombreCondimento.setText(condimento.getNombre());
+       // textViewNombreCondimento.setText(condimento.getNombre());
 
         return convertView;
     }
