@@ -43,6 +43,13 @@
             android:text="Listar ingredientes especiales" />
 
         <Button
+            android:id="@+id/button_listar_guarnicion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ListarGuarniciones"
+            android:text="Listar guarniciones" />
+
+        <Button
             android:id="@+id/btnRegistrarOrden"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

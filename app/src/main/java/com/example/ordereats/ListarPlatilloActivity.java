@@ -83,7 +83,7 @@ public class ListarPlatilloActivity extends AppCompatActivity implements Respons
     }
 
     public void volverInicio(View view) {
-        Intent intent = new Intent(view.getContext(), MainActivity.class);
+        Intent intent = new Intent(view.getContext(), Menu.class);
         view.getContext().startActivity(intent);
     }
 
