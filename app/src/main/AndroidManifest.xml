@@ -15,6 +15,15 @@
         android:theme="@style/Theme.Ordereats"
         tools:targetApi="31">
         <activity
+            android:name=".InsertarIngredienteEspecialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizaIngredienteEspecialActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListarIngredienteEspecialActivity"
+            android:exported="false" />
+        <activity
             android:name=".ActualizaPlatilloActivity"
             android:exported="false" />
         <activity

@@ -15,11 +15,18 @@
 
 
         <Button
-            android:id="@+id/button_agregar_excursiones"
+            android:id="@+id/button_listar_platillos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="IngresarPlatillo"
-            android:text="Ingresar Platillo" />
+            android:onClick="ListarPlatillos"
+            android:text="Listar platillos" />
+
+        <Button
+            android:id="@+id/button_listar_ingredientes_especiales"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ListarIngredientesEspeciales"
+            android:text="Listar ingredientes especiales" />
 
     </LinearLayout>
 

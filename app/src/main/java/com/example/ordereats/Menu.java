@@ -14,8 +14,13 @@ public class Menu extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
     }
 
-    public void IngresarPlatillo(View view) {
-        Intent intent = new Intent(this, InsertarPlatilloActivity.class);
+    public void ListarPlatillos(View view) {
+        Intent intent = new Intent(this, ListarPlatilloActivity.class);
         startActivity(intent);
     }
+    public void ListarIngredientesEspeciales(View view) {
+        Intent intent = new Intent(this, ListarIngredienteEspecialActivity.class);
+        startActivity(intent);
+    }
+
 }
