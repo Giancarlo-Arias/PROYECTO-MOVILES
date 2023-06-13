@@ -5,13 +5,36 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class Menu extends AppCompatActivity {
+
+    private TextView txtWelcome;
+
+    Button logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+
+        txtWelcome = findViewById(R.id.txtWelcome2);
+        String username = getIntent().getStringExtra("username");
+        if (username != null) {
+            txtWelcome.setText("Bienvenido, " + username + "!");
+        } else {
+            txtWelcome.setText("Bienvenido!");
+        }
+
+        logout= (Button) findViewById(R.id.btnLogOut2);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     public void ListarPlatillos(View view) {

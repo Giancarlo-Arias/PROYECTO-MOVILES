@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                         cursor.moveToFirst();
                         String nombreUsuario = cursor.getString(1); // Reemplaza el índice 1 si corresponde a la columna "Name"
                         Toast.makeText(MainActivity.this, "Usuario Correcto", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                        Intent intent = new Intent(MainActivity.this, Menu.class);
                         intent.putExtra("username", nombreUsuario); // Pasar el nombre de usuario al siguiente Activity
                         startActivity(intent);
                     } else {
