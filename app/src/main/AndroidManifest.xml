@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Ordereats"
         tools:targetApi="31">
         <activity
+            android:name=".InsertarGuarnicionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ListarGuarnicionActivity"
             android:exported="false" />
         <activity
