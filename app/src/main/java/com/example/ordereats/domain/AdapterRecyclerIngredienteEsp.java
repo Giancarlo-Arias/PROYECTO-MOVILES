@@ -135,6 +135,7 @@ public class AdapterRecyclerIngredienteEsp extends RecyclerView.Adapter<AdapterR
         private void abrirActualizaIngredienteEspecialActivity(GestorMenu ingredienteEspecial) {
             Intent intent = new Intent(context, ActualizaIngredienteEspecialActivity.class);
             intent.putExtra("ingredienteEspecial", (CharSequence) ingredienteEspecial);
+
             context.startActivity(intent);
         }
     }
