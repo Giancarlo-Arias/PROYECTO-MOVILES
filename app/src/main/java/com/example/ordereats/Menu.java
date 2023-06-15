@@ -55,4 +55,8 @@ public class Menu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public  void ListarUsuario(View view){
+        Intent intent = new Intent(this, ListarUsuarioActivity.class);
+        startActivity(intent);
+    }
 }

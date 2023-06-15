@@ -1,7 +1,7 @@
 package com.example.ordereats.data;
 
 public class DataApi {
-    public static String ip="http://192.168.100.37/enlaceApiConeccionDBordereats/";
+    public static String ip="http://192.168.100.69/enlaceApiConeccionDBordereats/";
     /*API platillos*/
     public static String insertarPlatillo=ip+"PlatoApi.php?accion=InsertarPlatillo";
     public static String obtenerPlatoPorId=ip+"PlatoApi.php?accion=ObtenerPlatoPorId";
