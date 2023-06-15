@@ -33,7 +33,7 @@ public class ListarGuarnicionActivity extends AppCompatActivity implements Respo
         requestQueue = Volley.newRequestQueue(this);
 
         Intent intent = getIntent();
-        ID_GUARNICION = intent.getIntExtra("id_guarnicion", 0);
+        ID_GUARNICION = intent.getIntExtra("id_guarniciones", 0);
         guarnicionDB = new DataApi();
         jsonRequest = new JsonObjectRequest(Request.Method.GET, guarnicionDB.obtenerTodasGuarnicion, null, this, this);
         requestQueue.add(jsonRequest);
@@ -49,10 +49,13 @@ public class ListarGuarnicionActivity extends AppCompatActivity implements Respo
             ArrayList<GestorMenu> guarniciones = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                int idGuarnicion = jsonObject.getInt("id_guarnicion");
+                int idGuarnicion = jsonObject.getInt("id_guarniciones");
+                //Toast.makeText(this, "idGuarnicion."+idGuarnicion, Toast.LENGTH_SHORT).show();
                 String nombre = jsonObject.getString("nombre");
+                //Toast.makeText(this, "nombre."+nombre, Toast.LENGTH_SHORT).show();
                 double precio = jsonObject.getDouble("precio");
-                GestorMenu guarnicion = new GestorMenu(idGuarnicion, nombre, precio);
+                //Toast.makeText(this, "precio."+precio, Toast.LENGTH_SHORT).show();
+                GestorMenu guarnicion = new GestorMenu(idGuarnicion, nombre,"nada", precio);
                 guarniciones.add(guarnicion);
             }
             if (guarniciones.isEmpty()) {

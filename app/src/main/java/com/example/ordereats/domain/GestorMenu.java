@@ -13,11 +13,13 @@ public class GestorMenu {
         this.descripcion = descripcion;
         this.precio = precio;
     }
+
     public GestorMenu(int id, String nombre, double precio) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
     }
+
     public int getId() {
         return id;
     }

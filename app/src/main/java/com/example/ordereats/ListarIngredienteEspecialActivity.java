@@ -56,13 +56,12 @@ public class ListarIngredienteEspecialActivity extends AppCompatActivity impleme
                 int idIngredienteEspecial = jsonObject.getInt("id_ingrediente_especial");
                 String nombre = jsonObject.getString("nombre");
                 double precio = jsonObject.getDouble("precio");
-                GestorMenu ingredienteEspecial = new GestorMenu(idIngredienteEspecial, nombre, precio);
+                GestorMenu ingredienteEspecial = new GestorMenu(idIngredienteEspecial, nombre,"nada", precio);
                 ingredientesEspeciales.add(ingredienteEspecial);
             }
             if (ingredientesEspeciales.isEmpty()) {
                 Toast.makeText(this, "No hay ingredientes especiales.", Toast.LENGTH_SHORT).show();
             } else {
-                // Asegúrate de tener el RecyclerView en tu layout y asignarle el adaptador
                 RecyclerView recycler = findViewById(R.id.recyclerIngredientesEspeciales);
                 AdapterRecyclerIngredienteEsp adapter = new AdapterRecyclerIngredienteEsp(this, ingredientesEspeciales);
                 recycler.setAdapter(adapter);

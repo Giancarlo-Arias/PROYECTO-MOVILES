@@ -128,6 +128,7 @@ public class AdapterRecyclerIngredienteEsp extends RecyclerView.Adapter<AdapterR
         }
 
         public void asignarDatos(GestorMenu ingredienteEspecial) {
+            Toast.makeText(context, "ingredienteEspecial.getNombre()"+ingredienteEspecial.getNombre(), Toast.LENGTH_SHORT).show();
             nombreIngredienteEspecial.setText(ingredienteEspecial.getNombre());
             precioIngredienteEspecial.setText("Precio: " + ingredienteEspecial.getPrecio());
         }
