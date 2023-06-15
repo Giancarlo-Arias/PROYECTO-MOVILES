@@ -1,6 +1,8 @@
 package com.example.ordereats;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.view.View;
@@ -12,6 +14,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ordereats.data.DataApi;
+import com.example.ordereats.domain.AdapterRecyclerPlatillos;
 import com.example.ordereats.domain.GestorMenu;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,6 +26,7 @@ public class ListarGuarnicionActivity extends AppCompatActivity implements Respo
     private int ID_GUARNICION = 0;
     private DataApi guarnicionDB;
     private RequestQueue requestQueue;
+    private RecyclerView recycler;
     private ArrayList<GestorMenu> guarnicion;
     private JsonObjectRequest jsonRequest;
 
@@ -38,7 +42,8 @@ public class ListarGuarnicionActivity extends AppCompatActivity implements Respo
         jsonRequest = new JsonObjectRequest(Request.Method.GET, guarnicionDB.obtenerTodasGuarnicion, null, this, this);
         requestQueue.add(jsonRequest);
         Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
-
+        recycler = findViewById(R.id.recyclerGuarniciones);
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         guarnicion = new ArrayList<>();
     }
 
@@ -50,21 +55,17 @@ public class ListarGuarnicionActivity extends AppCompatActivity implements Respo
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 int idGuarnicion = jsonObject.getInt("id_guarniciones");
-                //Toast.makeText(this, "idGuarnicion."+idGuarnicion, Toast.LENGTH_SHORT).show();
                 String nombre = jsonObject.getString("nombre");
-                //Toast.makeText(this, "nombre."+nombre, Toast.LENGTH_SHORT).show();
                 double precio = jsonObject.getDouble("precio");
-                //Toast.makeText(this, "precio."+precio, Toast.LENGTH_SHORT).show();
                 GestorMenu guarnicion = new GestorMenu(idGuarnicion, nombre,"nada", precio);
                 guarniciones.add(guarnicion);
             }
             if (guarniciones.isEmpty()) {
                 Toast.makeText(this, "No hay guarniciones.", Toast.LENGTH_SHORT).show();
             } else {
-                // Asegúrate de tener el RecyclerView en tu layout y asignarle el adaptador
-                RecyclerView recycler = findViewById(R.id.recyclerGuarniciones);
                 AdapterRecyclerGuarnicion adapter = new AdapterRecyclerGuarnicion(this, guarniciones);
                 recycler.setAdapter(adapter);
+
             }
         } catch (JSONException e) {
             e.printStackTrace();

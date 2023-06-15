@@ -137,7 +137,7 @@ public class AdapterRecyclerPlatillos extends RecyclerView.Adapter<AdapterRecycl
 
         private void abrirActualizaPlatilloActivity(GestorMenu platillo) {
             Intent intent = new Intent(context, ActualizaPlatilloActivity.class);
-            intent.putExtra("platillo", (CharSequence) platillo);
+            intent.putExtra("platillo", platillo);
             context.startActivity(intent);
         }
     }

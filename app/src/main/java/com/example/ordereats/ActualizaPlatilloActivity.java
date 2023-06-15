@@ -25,6 +25,7 @@ import java.util.Map;
 
 public class ActualizaPlatilloActivity extends AppCompatActivity {
     private DataApi platilloDB;
+    private GestorMenu platillo;
     private RequestQueue requestQueue;
     private EditText editNombre;
     private EditText editDescripcion;
@@ -41,11 +42,8 @@ public class ActualizaPlatilloActivity extends AppCompatActivity {
         editDescripcion = findViewById(R.id.edit_descripcion);
         editPrecio = findViewById(R.id.edit_precio);
         btnGuardar = findViewById(R.id.btn_guardar);
-
-        Intent intent = getIntent();
-        GestorMenu platillo = (GestorMenu) intent.getSerializableExtra("platillo");
+        platillo = (GestorMenu) getIntent().getSerializableExtra("platillo");
         if (platillo != null) {
-            // Mostrar la información del objeto en los inputs
             editNombre.setText(platillo.getNombre());
             editDescripcion.setText(platillo.getDescripcion());
             editPrecio.setText(String.valueOf(platillo.getPrecio()));

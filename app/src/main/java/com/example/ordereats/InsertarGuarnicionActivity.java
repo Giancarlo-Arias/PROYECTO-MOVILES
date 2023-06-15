@@ -57,9 +57,7 @@ public class InsertarGuarnicionActivity extends AppCompatActivity implements Res
             Toast.makeText(this, "El precio de la guarnición debe ser un número válido", Toast.LENGTH_SHORT).show();
             return;
         }
-
         String urlQuery = dataApi.insertarGuarnicion + "&nombre=" + nombreGuarnicion + "&precio=" + precioGuarnicion;
-
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, urlQuery, null, this, this);
         requestQueue.add(jsonObjectRequest);
     }
@@ -73,13 +71,10 @@ public class InsertarGuarnicionActivity extends AppCompatActivity implements Res
     @Override
     public void onResponse(JSONObject response) {
         try {
-            // Obtener la respuesta del servidor
-            String message = response.getString("message");
+            String message = response.getString("success");
 
-            // Mostrar mensaje de éxito
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-            // Limpiar los campos de entrada
             nombreEditText.setText("");
             precioEditText.setText("");
         } catch (JSONException e) {

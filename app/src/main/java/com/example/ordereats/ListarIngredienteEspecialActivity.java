@@ -1,5 +1,6 @@
 package com.example.ordereats;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -27,6 +28,7 @@ public class ListarIngredienteEspecialActivity extends AppCompatActivity impleme
     private int ID_INGREDIENTEESPECIAL = 0;
     private DataApi ingredienteEspecialDB;
     private RequestQueue requestQueue;
+    private RecyclerView recycler;
     private ArrayList<GestorMenu> ingredienteEspecial;
     private JsonObjectRequest jsonRequest;
 
@@ -42,7 +44,8 @@ public class ListarIngredienteEspecialActivity extends AppCompatActivity impleme
         jsonRequest = new JsonObjectRequest(Request.Method.GET, ingredienteEspecialDB.obtenerTodosIngredientesEspeciales, null, this, this);
         requestQueue.add(jsonRequest);
         Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
-
+        recycler = findViewById(R.id.recyclerIngredientesEspeciales);
+        recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         ingredienteEspecial = new ArrayList<>();
     }
 
@@ -62,7 +65,6 @@ public class ListarIngredienteEspecialActivity extends AppCompatActivity impleme
             if (ingredientesEspeciales.isEmpty()) {
                 Toast.makeText(this, "No hay ingredientes especiales.", Toast.LENGTH_SHORT).show();
             } else {
-                RecyclerView recycler = findViewById(R.id.recyclerIngredientesEspeciales);
                 AdapterRecyclerIngredienteEsp adapter = new AdapterRecyclerIngredienteEsp(this, ingredientesEspeciales);
                 recycler.setAdapter(adapter);
             }

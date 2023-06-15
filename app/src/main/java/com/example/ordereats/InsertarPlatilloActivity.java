@@ -81,13 +81,8 @@ public class InsertarPlatilloActivity extends AppCompatActivity implements Respo
     @Override
     public void onResponse(JSONObject response) {
         try {
-            // Obtener la respuesta del servidor
-            String message = response.getString("message");
-
-            // Mostrar mensaje de éxito
+            String message = response.getString("success");
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
-            // Limpiar los campos de entrada
             nombreEditText.setText("");
             descripcionEditText.setText("");
             precioEditText.setText("");

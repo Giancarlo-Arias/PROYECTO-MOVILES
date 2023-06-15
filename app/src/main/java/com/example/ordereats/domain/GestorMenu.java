@@ -1,6 +1,8 @@
 package com.example.ordereats.domain;
 
-public class GestorMenu {
+import java.io.Serializable;
+
+public class GestorMenu implements Serializable {
     private int id;
     private String nombre;
     private String descripcion;

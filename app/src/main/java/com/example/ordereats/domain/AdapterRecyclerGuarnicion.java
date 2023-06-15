@@ -134,7 +134,7 @@ public class AdapterRecyclerGuarnicion extends RecyclerView.Adapter<AdapterRecyc
 
         private void abrirActualizaGuarnicionActivity(GestorMenu guarnicion) {
             Intent intent = new Intent(context, ActualizaGuarnicionActivity.class);
-            intent.putExtra("guarnicion", (CharSequence) guarnicion);
+            intent.putExtra("guarnicion", guarnicion);
             context.startActivity(intent);
         }
     }

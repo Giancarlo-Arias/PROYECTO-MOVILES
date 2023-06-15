@@ -42,6 +42,7 @@ public class ActualizaIngredienteEspecialActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         GestorMenu ingredienteEspecial = (GestorMenu) intent.getSerializableExtra("ingredienteEspecial");
+
         if (ingredienteEspecial != null) {
             // Mostrar la información del objeto en los inputs
             editNombre.setText(ingredienteEspecial.getNombre());

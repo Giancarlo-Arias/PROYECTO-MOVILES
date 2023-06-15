@@ -128,14 +128,13 @@ public class AdapterRecyclerIngredienteEsp extends RecyclerView.Adapter<AdapterR
         }
 
         public void asignarDatos(GestorMenu ingredienteEspecial) {
-            Toast.makeText(context, "ingredienteEspecial.getNombre()"+ingredienteEspecial.getNombre(), Toast.LENGTH_SHORT).show();
-            nombreIngredienteEspecial.setText(ingredienteEspecial.getNombre());
+              nombreIngredienteEspecial.setText(ingredienteEspecial.getNombre());
             precioIngredienteEspecial.setText("Precio: " + ingredienteEspecial.getPrecio());
         }
 
         private void abrirActualizaIngredienteEspecialActivity(GestorMenu ingredienteEspecial) {
             Intent intent = new Intent(context, ActualizaIngredienteEspecialActivity.class);
-            intent.putExtra("ingredienteEspecial", (CharSequence) ingredienteEspecial);
+            intent.putExtra("ingredienteEspecial",ingredienteEspecial);
 
             context.startActivity(intent);
         }

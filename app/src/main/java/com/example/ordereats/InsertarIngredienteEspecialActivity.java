@@ -72,13 +72,9 @@ public class InsertarIngredienteEspecialActivity extends AppCompatActivity imple
     @Override
     public void onResponse(JSONObject response) {
         try {
-            // Obtener la respuesta del servidor
-            String message = response.getString("message");
-
-            // Mostrar mensaje de éxito
+            String message = response.getString("success");
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 
-            // Limpiar los campos de entrada
             nombreEditText.setText("");
             precioEditText.setText("");
         } catch (JSONException e) {
@@ -87,7 +83,7 @@ public class InsertarIngredienteEspecialActivity extends AppCompatActivity imple
     }
 
     public void volverInicio(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Menu.class);
         startActivity(intent);
     }
 }
