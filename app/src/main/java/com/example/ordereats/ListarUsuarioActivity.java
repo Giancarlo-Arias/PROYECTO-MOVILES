@@ -64,17 +64,6 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
         recycler = findViewById(R.id.recyclerUsuarios);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         usuarios = new ArrayList<>();
-
-
-
-        /*btnMenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(ListarUsuarioActivity.this, Menu.class);
-                startActivity(i);
-            }
-        });*/
-
     }
 
     @Override

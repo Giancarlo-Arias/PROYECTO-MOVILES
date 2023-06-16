@@ -36,14 +36,14 @@ public class Menu extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        listUser= (Button) findViewById(R.id.btnListarUse);
+        /*listUser= (Button) findViewById(R.id.btnListarUse);
         listUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Menu.this,ListarUsuarioActivity.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 
     public void ListarPlatillos(View view) {

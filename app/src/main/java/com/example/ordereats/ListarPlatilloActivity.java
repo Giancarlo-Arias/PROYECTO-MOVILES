@@ -28,10 +28,15 @@ import java.util.ArrayList;
 
 public class ListarPlatilloActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
     private int ID_PLATILLO = 0;
+
     private DataApi platilloDB;
+
     private RequestQueue requestQueue;
+
     private RecyclerView recycler;
+
     private ArrayList<GestorMenu> platillos;
+
     private JsonObjectRequest jsonRequest;
 
     @Override

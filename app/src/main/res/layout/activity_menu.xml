@@ -51,13 +51,6 @@
 
 
         <Button
-            android:id="@+id/btnListUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="ListarUsuario"
-            android:text="Button" />
-
-        <Button
             android:id="@+id/btnRegistrarOrden"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,6 +61,7 @@
             android:id="@+id/btnListarUse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="ListarUsuario"
             android:text="Listar Usuario" />
 
         <Button
