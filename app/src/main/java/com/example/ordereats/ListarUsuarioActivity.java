@@ -98,7 +98,5 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }
