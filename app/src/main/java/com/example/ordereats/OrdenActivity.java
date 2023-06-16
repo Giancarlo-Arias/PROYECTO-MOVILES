@@ -17,12 +17,15 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ordereats.data.DataApi;
 import com.example.ordereats.domain.AdapterSpinnerCoccion;
+import com.example.ordereats.domain.AdapterSpinnerCondimento;
 import com.example.ordereats.domain.AdapterSpinnerGuarnicion;
 import com.example.ordereats.domain.AdapterSpinnerPicante;
 import com.example.ordereats.domain.AdapterSpinnerPorcion;
 import com.example.ordereats.domain.AdapterSpinnerProteina;
 import com.example.ordereats.domain.GestorGuarnicion;
 import com.example.ordereats.domain.gestorCoccion;
+import com.example.ordereats.domain.gestorCondimento;
+import com.example.ordereats.domain.gestorEspeciales;
 import com.example.ordereats.domain.gestorPicante;
 import com.example.ordereats.domain.gestorPorcion;
 import com.example.ordereats.domain.gestorProteina;
@@ -42,6 +45,8 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private RequestQueue requestQueueCoccion;
     private RequestQueue requestQueuePorcion;
     private RequestQueue requestQueueGuarnicion;
+    private RequestQueue requestQueueCondimento;
+    private RequestQueue requestQueueEspecial;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     private JsonObjectRequest jsonRequest;
     private JsonObjectRequest jsonRequestProteina;
@@ -49,6 +54,8 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private JsonObjectRequest jsonRequestCoccion;
     private JsonObjectRequest jsonRequestPorcion;
     private JsonObjectRequest jsonRequestGuarnicion;
+    private JsonObjectRequest jsonRequestCondimentos;
+    private JsonObjectRequest jsonRequestEspecial;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     private Spinner platillo;
@@ -69,6 +76,8 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private ArrayList<gestorCoccion> cocciones;
     private ArrayList<gestorPorcion> porciones;
     private ArrayList<GestorGuarnicion> guarniciones;
+    private ArrayList<gestorCondimento> condimentos;
+    private ArrayList<gestorEspeciales> especales;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,12 +120,30 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
         porciones= new ArrayList<>();
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         requestQueueGuarnicion = Volley.newRequestQueue(this);
-        jsonRequestGuarnicion=new JsonObjectRequest(Request.Method.GET,data.optenerTamanoPorcion,null,this,this);
+        jsonRequestGuarnicion=new JsonObjectRequest(Request.Method.GET,data.obtenerTodasGuarnicion,null,this,this);
         requestQueueGuarnicion.add(jsonRequestGuarnicion);
         Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
 
         guarnicion = findViewById(R.id.spinnerGradoCocción);
         guarniciones= new ArrayList<>();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        requestQueueCondimento = Volley.newRequestQueue(this);
+        jsonRequestCondimentos=new JsonObjectRequest(Request.Method.GET,data.optenerCondimentos,null,this,this);
+        requestQueueCondimento.add(jsonRequestCondimentos);
+        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
+
+        condimento = findViewById(R.id.spinnerGradoCocción);
+        condimentos= new ArrayList<>();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        requestQueueEspecial = Volley.newRequestQueue(this);
+        jsonRequestEspecial=new JsonObjectRequest(Request.Method.GET,data.obtenerTodosIngredientesEspeciales,null,this,this);
+        requestQueueEspecial.add(jsonRequestEspecial);
+        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
+
+        ingredienteSpecial = findViewById(R.id.spinnerGradoCocción);
+        especales= new ArrayList<>();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -239,6 +266,48 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
 
             }
 ////////////////////////////////////////////////////////////////Guarnicion///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////Condimentos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+
+            JSONArray jsonArrayCondimentos = response.getJSONArray("picante");
+            ArrayList<gestorCondimento> mostrarCondimentos= new ArrayList<>();
+            for (int i = 0; i < jsonArrayCondimentos.length(); i++) {
+                JSONObject jsonObject = jsonArrayCondimentos.getJSONObject(i);
+                int id_Condimento = jsonObject.getInt("id_Condimento");
+                String nombre = jsonObject.getString("nombre");
+                double precio = jsonObject.getDouble("precio");
+
+
+                gestorCondimento gestorcondimento = new gestorCondimento(id_Condimento,nombre,precio);
+                mostrarCondimentos.add(gestorcondimento);
+            }
+            if (mostrarCondimentos.isEmpty()) {
+                Toast.makeText(this, "No hay opciones de condimento.", Toast.LENGTH_SHORT).show();
+            } else {
+                AdapterSpinnerCondimento adapterCondiment = new AdapterSpinnerCondimento(this, mostrarCondimentos);
+                condimento.setAdapter(adapterCondiment);
+            }
+////////////////////////////////////////////////////////////////Condimentos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////Condimentos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+
+            JSONArray jsonArrayEspeciales = response.getJSONArray("picante");
+            ArrayList<gestorEspeciales> mostrarEspciales= new ArrayList<>();
+            for (int i = 0; i < jsonArrayEspeciales.length(); i++) {
+                JSONObject jsonObject = jsonArrayEspeciales.getJSONObject(i);
+                int id_ingrediente_especial = jsonObject.getInt("id_ingrediente_especial");
+                String nombre = jsonObject.getString("nombre");
+                double precio = jsonObject.getDouble("precio");
+                boolean estado = jsonObject.getBoolean("estado");
+
+                gestorEspeciales gestorespeciales = new gestorEspeciales(nombre,precio,id_ingrediente_especial,estado);
+                mostrarEspciales.add(gestorespeciales);
+            }
+            if (mostrarEspciales.isEmpty()) {
+                Toast.makeText(this, "No hay opciones de condimento.", Toast.LENGTH_SHORT).show();
+            } else {
+                AdapterSpinnerCondimento adapterCondiment = new AdapterSpinnerCondimento(this, mostrarCondimentos);
+                condimento.setAdapter(adapterCondiment);
+            }
+////////////////////////////////////////////////////////////////Condimentos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
 
 
 
