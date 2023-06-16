@@ -58,6 +58,13 @@
             android:text="Registrar Orden" />
 
         <Button
+            android:id="@+id/btnListarUse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="ListarUsuario"
+            android:text="Listar Usuario" />
+
+        <Button
             android:id="@+id/btnLogOut2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

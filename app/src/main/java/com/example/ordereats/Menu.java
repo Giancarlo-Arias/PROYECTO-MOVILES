@@ -13,6 +13,7 @@ public class Menu extends AppCompatActivity {
     private TextView txtWelcome;
 
     Button logout;
+    Button listUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,14 @@ public class Menu extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        /*listUser= (Button) findViewById(R.id.btnListarUse);
+        listUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this,ListarUsuarioActivity.class);
+                startActivity(i);
+            }
+        });*/
     }
 
     public void ListarPlatillos(View view) {
@@ -55,4 +64,8 @@ public class Menu extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public  void ListarUsuario(View view){
+        Intent intent = new Intent(this, ListarUsuarioActivity.class);
+        startActivity(intent);
+    }
 }

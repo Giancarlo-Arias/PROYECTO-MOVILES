@@ -114,7 +114,7 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     // Método para redirigir a MainActivity
     private void navigateToMainActivity() {
-        Intent intent = new Intent(CreateAccountActivity.this, Menu.class);
+        Intent intent = new Intent(CreateAccountActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
