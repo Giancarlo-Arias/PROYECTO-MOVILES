@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ordereats.data.DataApi;
+import com.example.ordereats.domain.AdapterSpinnerPicante;
 import com.example.ordereats.domain.GestorGuarnicion;
 import com.example.ordereats.domain.GestorMenu;
 import com.example.ordereats.domain.gestorCoccion;
@@ -31,7 +33,7 @@ import java.util.ArrayList;
 
 public class OrdenActivity extends AppCompatActivity implements Response.Listener<JSONObject>,Response.ErrorListener {
 
-    private DataApi ordenDB;
+    private DataApi picantedata;
     private  RequestQueue requestQueue;
     private JsonObjectRequest jsonRequest;
 
@@ -46,12 +48,21 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
 
     Button registrar;
 
+
+    private ArrayList<gestorPicante> picantes;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orden);
-        
-       // ordenDB = new ArrayList<>();
+        requestQueue = Volley.newRequestQueue(this);
+        picantedata = new DataApi();
+        jsonRequest = new JsonObjectRequest(Request.Method.GET,picantedata.optenerNivelPicante,null,this,this);
+        requestQueue.add(jsonRequest);
+        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
+
+        picante = findViewById(R.id.spinnerNivelPicante);
+        picantes = new ArrayList<>();
     }
 
     @Override
@@ -62,26 +73,31 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     @Override
     public void onResponse(JSONObject response) {
 
-        JSONArray jsonArray = null;
+
         try {
-            jsonArray = response.getJSONArray("platillos");
-            JSONArray jsonArrayEspeciales = response.getJSONArray("especiales");
-            JSONArray jsonArrayProteina = response.getJSONArray("proteina");
-            JSONArray jsonArrayGuarnicion = response.getJSONArray("guarnicion");
-            JSONArray jsonArrayCondimento = response.getJSONArray("condimentos");
+
             JSONArray jsonArrayPicante = response.getJSONArray("picante");
-            JSONArray jsonArrayPorcion = response.getJSONArray("porcion");
-            JSONArray jsonArrayCoccion = response.getJSONArray("coccion");
+            ArrayList<gestorPicante>mostrarPicantes= new ArrayList<>();
+            for (int i = 0; i < jsonArrayPicante.length(); i++) {
+                JSONObject jsonObject = jsonArrayPicante.getJSONObject(i);
+                int id_nivel_picante = jsonObject.getInt("tb_nivel_picante");
+                String nombre = jsonObject.getString("nombre");
+
+                gestorPicante gestor = new gestorPicante(id_nivel_picante,nombre);
+                mostrarPicantes.add(gestor);
+            }
+            if (mostrarPicantes.isEmpty()) {
+                Toast.makeText(this, "No hay Nivel de Picantes.", Toast.LENGTH_SHORT).show();
+            } else {
+                AdapterSpinnerPicante adapter = new AdapterSpinnerPicante(this, mostrarPicantes);
+                picante.setAdapter(adapter);
+            }
 
 
-            ArrayList<GestorMenu> platillos = new ArrayList<>();
-            ArrayList<gestorEspeciales> especiales = new ArrayList<>();
-            ArrayList<gestorProteina> proteinas = new ArrayList<>();
-            ArrayList<GestorGuarnicion> guarniciones = new ArrayList<>();
-            ArrayList<gestorCondimento> condimentos = new ArrayList<>();
-            ArrayList<gestorPicante> picante = new ArrayList<>();
-            ArrayList<GestorMenu> porcion = new ArrayList<>();
-            ArrayList<gestorCoccion> coccion = new ArrayList<>();
+
+
+
+
 
 
 
