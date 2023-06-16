@@ -2,7 +2,7 @@ package com.example.ordereats.data;
 
 public class DataApi {
 
-    public static String ip="http://192.168.100.69/enlaceApiConeccionDBordereats/";
+    public static String ip="http://172.17.48.171/enlaceApiConeccionDBordereats/";
 
     public static String insertarUsuario= ip+"UsuarioApi.php?accion=InsertarUser";
     public static String obtenerUsuarios= ip+"UsuarioApi.php?accion=obtenerUsuarios";
