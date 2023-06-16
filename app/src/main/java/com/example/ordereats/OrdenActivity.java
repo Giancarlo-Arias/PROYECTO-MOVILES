@@ -20,6 +20,7 @@ import com.example.ordereats.domain.AdapterSpinnerCoccion;
 import com.example.ordereats.domain.AdapterSpinnerCondimento;
 import com.example.ordereats.domain.AdapterSpinnerGuarnicion;
 import com.example.ordereats.domain.AdapterSpinnerPicante;
+import com.example.ordereats.domain.AdapterSpinnerPlatillos;
 import com.example.ordereats.domain.AdapterSpinnerPorcion;
 import com.example.ordereats.domain.AdapterSpinnerProteina;
 import com.example.ordereats.domain.GestorGuarnicion;
@@ -27,6 +28,7 @@ import com.example.ordereats.domain.gestorCoccion;
 import com.example.ordereats.domain.gestorCondimento;
 import com.example.ordereats.domain.gestorEspeciales;
 import com.example.ordereats.domain.gestorPicante;
+import com.example.ordereats.domain.gestorPlatillos;
 import com.example.ordereats.domain.gestorPorcion;
 import com.example.ordereats.domain.gestorProteina;
 
@@ -47,6 +49,7 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private RequestQueue requestQueueGuarnicion;
     private RequestQueue requestQueueCondimento;
     private RequestQueue requestQueueEspecial;
+    private RequestQueue requestQueuePlatillo;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     private JsonObjectRequest jsonRequest;
     private JsonObjectRequest jsonRequestProteina;
@@ -56,6 +59,7 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private JsonObjectRequest jsonRequestGuarnicion;
     private JsonObjectRequest jsonRequestCondimentos;
     private JsonObjectRequest jsonRequestEspecial;
+    private JsonObjectRequest jsonRequestPlatillo;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     private Spinner platillo;
@@ -78,6 +82,7 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
     private ArrayList<GestorGuarnicion> guarniciones;
     private ArrayList<gestorCondimento> condimentos;
     private ArrayList<gestorEspeciales> especales;
+    private ArrayList<gestorPlatillos> platillos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +151,16 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
         especales= new ArrayList<>();
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        requestQueuePlatillo = Volley.newRequestQueue(this);
+        jsonRequestPlatillo=new JsonObjectRequest(Request.Method.GET,data.obtenerTodosIngredientesEspeciales,null,this,this);
+        requestQueuePlatillo.add(jsonRequestPlatillo);
+        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
+
+        platillo = findViewById(R.id.spinnerGradoCocción);
+        platillos= new ArrayList<>();
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
     }
@@ -308,6 +323,30 @@ public class OrdenActivity extends AppCompatActivity implements Response.Listene
                 condimento.setAdapter(adapterCondiment);
             }
 ////////////////////////////////////////////////////////////////Condimentos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+
+            ////////////////////////////////////////////////////////////////platillos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+
+            JSONArray jsonArrayPlatillos = response.getJSONArray("picante");
+            ArrayList<gestorPlatillos> mostrarPlatillos= new ArrayList<>();
+            for (int i = 0; i < jsonArrayPlatillos.length(); i++) {
+                JSONObject jsonObject = jsonArrayPlatillos.getJSONObject(i);
+                int id_plato = jsonObject.getInt("id_plato");
+                String nombre = jsonObject.getString("nombre");
+                double precio = jsonObject.getDouble("precio");
+                String descripcion = jsonObject.getString("descripcion");
+                boolean estado = jsonObject.getBoolean("estado");
+
+                gestorPlatillos gestorplatillos = new gestorPlatillos(id_plato,nombre,descripcion,precio,estado);
+                mostrarPlatillos.add(gestorplatillos);
+            }
+            if (mostrarPlatillos.isEmpty()) {
+                Toast.makeText(this, "No hay opciones de platillos.", Toast.LENGTH_SHORT).show();
+            } else {
+                AdapterSpinnerPlatillos adapter = new AdapterSpinnerPlatillos(this, mostrarPlatillos);
+                platillo.setAdapter(adapter);
+            }
+////////////////////////////////////////////////////////////////platillos///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Porcion///////////////////////////////////////////////////////////
+
 
 
 
