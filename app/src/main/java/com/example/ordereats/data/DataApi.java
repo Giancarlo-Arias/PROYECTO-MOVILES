@@ -6,7 +6,6 @@ public class DataApi {
 
     public static String insertarUsuario= ip+"UsuarioApi.php?accion=InsertarUser";
     public static String obtenerUsuarios= ip+"UsuarioApi.php?accion=obtenerUsuarios";
-
     public static String eliminarUsuario= ip+"UsuarioApi.php?accion=eliminarUsuario";
 
     /*API platillos*/

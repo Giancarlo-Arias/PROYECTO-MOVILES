@@ -18,7 +18,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.ordereats.adapter.ListaUsuarioAdapter;
 import com.example.ordereats.data.DataApi;
-import com.example.ordereats.data.SQLLITE_OpenHelper;
 import com.example.ordereats.domain.AdapterRecyclerUsuarios;
 import com.example.ordereats.domain.User;
 
@@ -28,12 +27,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class ListarUsuarioActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener{
+public class ListarUsuarioActivity extends AppCompatActivity implements Response.Listener<JSONObject>, Response.ErrorListener {
 
     private int ID_USER = 0;
 
     private DataApi userDB;
-    Button btnMenu;
 
     private RequestQueue requestQueue;
 
@@ -42,8 +40,6 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
     private ArrayList<User> usuarios;
 
     private JsonObjectRequest jsonRequest;
-    //RecyclerView listaUsuario;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,16 +47,11 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
         setContentView(R.layout.activity_listar_usuario);
         requestQueue = Volley.newRequestQueue(this);
 
-        //btnMenu = (Button) findViewById(R.id.btnRegresar);
-
         Intent intent = getIntent();
-        ID_USER = intent.getIntExtra("user_id",0);
+        ID_USER = intent.getIntExtra("user_id", 0);
         userDB = new DataApi();
         jsonRequest = new JsonObjectRequest(Request.Method.GET, userDB.obtenerUsuarios, null, this, this);
         requestQueue.add(jsonRequest);
-
-        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
-
         recycler = findViewById(R.id.recyclerUsuarios);
         recycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
         usuarios = new ArrayList<>();
@@ -73,7 +64,7 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
 
     @Override
     public void onResponse(JSONObject response) {
-
+        Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
         try {
             JSONArray jsonArray = response.getJSONArray("usuarios");
             ArrayList<User> usuarios = new ArrayList<>();
@@ -84,9 +75,9 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
                 String user_Lastname = jsonObject.getString("user_Lastname");
                 String user_Phone = jsonObject.getString("user_phone");
                 String user_Email = jsonObject.getString("user_email");
-                String user_Password =jsonObject.getString("user_password");
-                int user_Active =jsonObject.getInt("user_active");
-                User user = new User( user_Id,  user_Name,  user_Lastname,  user_Phone,  user_Email,  user_Password, user_Active);
+               String user_Password = jsonObject.getString("user_password");
+                int user_Active = jsonObject.getInt("user_active");
+                User user = new User(user_Id, user_Name, user_Lastname, user_Phone, user_Email, "ththr", 1);
                 usuarios.add(user);
             }
             if (usuarios.isEmpty()) {
@@ -98,5 +89,10 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public void volverInicio(View view) {
+        Intent intent = new Intent(view.getContext(), Menu.class);
+        view.getContext().startActivity(intent);
     }
 }
