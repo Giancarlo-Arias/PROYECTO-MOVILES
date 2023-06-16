@@ -45,6 +45,8 @@ public class ListarPlatilloActivity extends AppCompatActivity implements Respons
         platilloDB = new DataApi();
         jsonRequest = new JsonObjectRequest(Request.Method.GET, platilloDB.obtenerPlatillos, null, this, this);
         requestQueue.add(jsonRequest);
+
+
         Toast.makeText(this, "Enviando solicitud...", Toast.LENGTH_SHORT).show();
 
         recycler = findViewById(R.id.recyclerPlatillos);

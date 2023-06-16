@@ -1,7 +1,14 @@
 package com.example.ordereats.data;
 
 public class DataApi {
+<<<<<<< Updated upstream
     public static String ip="http://192.168.100.69/enlaceApiConeccionDBordereats/";
+=======
+    public static String ip="http://192.168.100.37/enlaceApiConeccionDBordereats/";
+
+    public static String insertarUsuario= ip+"UsuarioApi.php?accion=InsertarUser";
+    public static String obtenerUsuarios= ip+"UsuarioApi.php?accion=obtenerUsuarios";
+>>>>>>> Stashed changes
     /*API platillos*/
     public static String insertarPlatillo=ip+"PlatoApi.php?accion=InsertarPlatillo";
     public static String obtenerPlatoPorId=ip+"PlatoApi.php?accion=ObtenerPlatoPorId";

@@ -1,0 +1,81 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginTop="8dp"
+    android:clickable="true"
+    app:cardCornerRadius="18dp"
+    app:cardBackgroundColor="@color/cardview_dark_background"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_alignParentStart="true"
+            android:src="@mipmap/perfil_cat_foreground" />
+
+        <TextView
+            android:id="@+id/card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_marginStart="16dp"
+            android:text="Nombre"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/card_user_lastname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_name"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Apellido"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/card_usuario_correo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_user_lastname"
+            android:layout_toEndOf="@id/imageView"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Correo"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/card_button_eliminar_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_usuario_correo"
+            android:layout_toEndOf="@id/imageView"
+            android:text="Eliminar"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/card_editar_usuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/card_usuario_correo"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@id/card_button_eliminar_usuario"
+            android:text="Editar"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

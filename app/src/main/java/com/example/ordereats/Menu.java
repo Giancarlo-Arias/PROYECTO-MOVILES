@@ -13,6 +13,7 @@ public class Menu extends AppCompatActivity {
     private TextView txtWelcome;
 
     Button logout;
+    Button listUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,14 @@ public class Menu extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Menu.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
+        listUser= (Button) findViewById(R.id.btnListarUse);
+        listUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Menu.this,ListarUsuarioActivity.class);
                 startActivity(i);
             }
         });
