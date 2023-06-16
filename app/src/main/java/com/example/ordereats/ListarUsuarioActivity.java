@@ -75,9 +75,9 @@ public class ListarUsuarioActivity extends AppCompatActivity implements Response
                 String user_Lastname = jsonObject.getString("user_Lastname");
                 String user_Phone = jsonObject.getString("user_phone");
                 String user_Email = jsonObject.getString("user_email");
-               String user_Password = jsonObject.getString("user_password");
+                String user_Password = jsonObject.getString("user_password");
                 int user_Active = jsonObject.getInt("user_active");
-                User user = new User(user_Id, user_Name, user_Lastname, user_Phone, user_Email, "ththr", 1);
+                User user = new User(user_Id, user_Name, user_Lastname, user_Phone, user_Email, user_Password, user_Active);
                 usuarios.add(user);
             }
             if (usuarios.isEmpty()) {
